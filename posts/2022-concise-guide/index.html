@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="David Wilby">
+
+<title>repliMAT blog - A ‘concise’ guide to reproducible MATLAB projects</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">repliMAT blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/reproducibleMATLAB/blog" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">A ‘concise’ guide to reproducible MATLAB projects</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">reproducibility</div>
+                <div class="quarto-category">guide</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>David Wilby </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">2nd May 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-reproducibility" id="toc-what-is-reproducibility" class="nav-link active" data-scroll-target="#what-is-reproducibility">What is reproducibility?</a></li>
+  <li><a href="#how-to-write-reproducible-matlab" id="toc-how-to-write-reproducible-matlab" class="nav-link" data-scroll-target="#how-to-write-reproducible-matlab">How to write reproducible MATLAB?</a>
+  <ul class="collapse">
+  <li><a href="#coding-style" id="toc-coding-style" class="nav-link" data-scroll-target="#coding-style">Coding style</a></li>
+  <li><a href="#project-organisation" id="toc-project-organisation" class="nav-link" data-scroll-target="#project-organisation">Project organisation</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#version-control" id="toc-version-control" class="nav-link" data-scroll-target="#version-control">Version control</a></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a></li>
+  <li><a href="#licensingopen-source" id="toc-licensingopen-source" class="nav-link" data-scroll-target="#licensingopen-source">Licensing/open source</a></li>
+  <li><a href="#collaborative-hostinggithubgitlab" id="toc-collaborative-hostinggithubgitlab" class="nav-link" data-scroll-target="#collaborative-hostinggithubgitlab">Collaborative hosting/GitHub/GitLab</a></li>
+  <li><a href="#matlab-projects" id="toc-matlab-projects" class="nav-link" data-scroll-target="#matlab-projects">MATLAB “Projects”</a></li>
+  <li><a href="#continuous-integration-and-continuous-deployment" id="toc-continuous-integration-and-continuous-deployment" class="nav-link" data-scroll-target="#continuous-integration-and-continuous-deployment">Continuous integration and continuous deployment</a></li>
+  <li><a href="#compiling-standalone-applications" id="toc-compiling-standalone-applications" class="nav-link" data-scroll-target="#compiling-standalone-applications">Compiling standalone applications</a></li>
+  <li><a href="#publishing-your-code-with-a-research-paper" id="toc-publishing-your-code-with-a-research-paper" class="nav-link" data-scroll-target="#publishing-your-code-with-a-research-paper">Publishing your code with a research paper</a></li>
+  <li><a href="#and-finally" id="toc-and-finally" class="nav-link" data-scroll-target="#and-finally">And finally…</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><em><a href="https://rse.shef.ac.uk/blog/2022-05-05-concise-guide-to-reproducible-matlab/">This post was originally published on the University of Sheffield Research Software Engineering Team blog in May 2022</a></em></p>
+<p><img src="image.png" class="img-fluid"></p>
+<p><em>Image produced by <a href="https://beta.dreamstudio.ai/generate">DreamStudio</a></em></p>
+<p>In research, it is of utmost importance to the scientific process to be able to reproduce research findings in order to establish their validity. However, more often than not, the code that is written for research purposes cannot be easily run again, sometimes even by the code’s authour (yours truly included!).</p>
+<p>This year, I’ve been awarded a fellowship by the <a href="https://software.ac.uk/">Software Sustainability Institute</a> to develop guidance and training to help researchers who use MATLAB to find and learn the tools that they need to easily produce better research by making their code reproducible.</p>
+<p>During my PhD and postdoctoral research, I used MATLAB, among other languages, to analyse data, run simulations, make figures and control instrumentation. However, at the time, I didn’t know about the concepts required to make my code reproducible for myself and others. Over the last few years, as a Research Software Engineer, I’ve gained the experience needed to develop reproducible software in a range of languages including MATLAB. Now it’s time to share what I’ve learned with everyone!</p>
+<p>This blog post should serve as a <em>very</em> brief set of signposts to some of the concepts you can use to develop a reproducible project in MATLAB. You can expect more to come throughout my fellowship, so watch this space.</p>
+<section id="what-is-reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-reproducibility">What is reproducibility?</h2>
+<p>When performing some research via any method, the most basic expectation is that the results should be able to be validated somehow, otherwise how can they be trusted? The most basic version of this is that by following the same methods of the researchers who originally performed a piece of work, you should be able to get to the same conclusions. This is essentially the concept of reproducibility, research should be able to be reproduced in order to validate its conclusions.</p>
+<p>When it comes to research code, it should be relatively easy to reproduce, right? There are no complicated <em>experiments</em> to run again, or data to collect, so it should be a given, shouldn’t it?</p>
+<p>In practice, we find that exact versions of software dependencies or the toolboxes required are not documented alongside a project, or it isn’t even clear how to get the right data into the software or run the code at all. This means that even with the original code available to you, it might not be possible to run the code, or <em>worse</em>, it could produce incorrect results.</p>
+<p>The goal of crafting a reproducible software project should be to produce a compendium of code, data and documentation that anyone should be able to pick up and run, generating the same results that you did initially. Reproducible software development practices are also just good practice in general, if you’ve followed good practice in the first place, when you come back to a project in several months’ or years’ time (or just on Monday morning), you should be able to make improvements, re-run the code or validate your results.</p>
+</section>
+<section id="how-to-write-reproducible-matlab" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-write-reproducible-matlab">How to write reproducible MATLAB?</h2>
+<p>Here are some tools and concepts you can use to improve the reproducibility of your MATLAB project. Many are the same concepts you’ll find recommended for most research software (and most <em>software</em>) projects, with some specific guidance on how to implement these in MATLAB.</p>
+<section id="coding-style" class="level3">
+<h3 class="anchored" data-anchor-id="coding-style">Coding style</h3>
+<p>Writing code that is readable should be your very first port of call for reproducibility. Not just for your colleagues and collaborators, but for yourself.</p>
+<p>In brief, you should:</p>
+<ol type="1">
+<li>Include comments that explain what your code is doing,</li>
+<li>Use self-explanatory variable, function and class names,</li>
+<li>Write modular code. Each function, for instance, should just do one job and be reusable at other places in your code,</li>
+<li>Avoid duplication. Write the code that does one job just once and write a function that you can call.</li>
+</ol>
+<p>A useful online resource for MATLAB coding style is the <a href="https://sites.google.com/site/matlabstyleguidelines/home">MATLAB Programming Style Guide</a>, based on Richard Johnson’s book, <a href="https://www.google.co.uk/books/edition/The_Elements_of_MATLAB_Style/awORkNlgiZoC?hl=en&amp;gbpv=1&amp;printsec=frontcover">The Elements of MATLAB style</a>, also available <a href="https://uk.mathworks.com/matlabcentral/fileexchange/46056-matlab-style-guidelines-2-0">on MATLAB’s FileExchange</a>. Why not have a skim through this succinct resource before starting your next project?</p>
+</section>
+<section id="project-organisation" class="level3">
+<h3 class="anchored" data-anchor-id="project-organisation">Project organisation</h3>
+<p>The first thing that makes a project difficult to reproduce is when you open the project folder to find a big heap of confusingly named scripts.</p>
+<p>Use folders/directories to organise your project, so that it is obvious (to you and anyone else who uses your code) where to find what is needed.</p>
+<p>At the very top level of your project, why not have something like the following structure?</p>
+<pre><code>├── data/             # directory to contain your data
+│   └── raw/          # all your raw, unprocessed data
+│   └── processed/    # any data that you have altered
+├── figures/          # keep the figures that you produce from your code here
+├── reports/          # a clear folder for your papers or reports for the project
+├── src/              # source code
+│   └── @MyClass/     # a class directory
+│   └── a_module/     # a directory containing a group of functions or classes with some commonality
+│   └── utils/        # a directory containing utility functions
+├── docs/             # documentation
+├── tests/            # software tests for the project
+├── README            # readme file! (essential)
+└── my.prj            # MATLAB project file (read on for more details)</code></pre>
+<p>For more in depth guidance on how to organise a project (and loads of other excellent advice) check out the <a href="https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Reproducible-Code-2019.pdf">BES’ guide to Reproducible Code</a> - I still refer to this guide regularly.</p>
+</section>
+<section id="documentation" class="level3">
+<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
+<p>Your users (<em><strong>that includes you</strong></em>) will thank you when they encounter some actual guidance on how to use your code - maybe they’ll actually use it! Imagine that!</p>
+<p>It’s a great idea to version control your documentation alongside your project (see <a href="#version-control">version control section below</a>) so that it remains up to date with changes in your code and the two don’t get out of sync with each other.</p>
+<p>Therefore, you need to write your documentation in a format that can be handled by your version control system (most likely, <code>git</code>) - e.g.&nbsp;as text files, and not a PDF, word document or google doc. A number of tools exist for doing this outside of MATLAB, be it <a href="https://readthedocs.org/">read the docs</a>, <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html">roxygen2</a> or another documentation generator. You could even just write your documentation in LaTeX and combine with a tool to automatically render a pdf (<a href="(#continuous-integration-and-continuous-deployment)">see CI/CD below</a>).</p>
+<p>Of course, you can use these tools for your MATLAB project. Your documentation is written in a raw text format such as markdown (like this blog post), or reStructuredText, MATLAB itself isn’t being used to execute code in the documentation. A documentation generator will process your raw text into a nice PDF or webpage. You could even run your documentation generator just using a <a href="#continuous-integration-and-continuous-deployment">continuous deployment</a> tool such as github actions and never install or run the tool on your local machine at all!</p>
+<p><a href="https://uk.mathworks.com/matlabcentral/answers/58438-which-tool-are-you-using-to-create-the-documentation-of-your-matlab-codes">See this MATLAB Answers thread</a> for a few examples of documentation generators to use with MATLAB.</p>
+<p>However, if you want to work purely in MATLAB, it has the tools to generate HTML or PDF (or even powerpoint) from an m-file, which can be version controlled alongside your code.</p>
+<section id="generating-documentation-with-matlab" class="level4">
+<h4 class="anchored" data-anchor-id="generating-documentation-with-matlab">Generating documentation with MATLAB</h4>
+<p>The tools for generating documentation from MATLAB are relatively immature, however there are plenty of functions available as part of the <a href="https://uk.mathworks.com/help/rptgen/">MATLAB Report Generator</a> which you can use for building documentation.</p>
+<p>Take, for example, a file called <code>docs.m</code> which uses the <a href="https://uk.mathworks.com/help/matlab/matlab_prog/marking-up-matlab-comments-for-publishing.html">MATLAB markup syntax</a> to format some documentation.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">%% My User Documentation</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">%% Section 1: Writing some text</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">%%</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">% One space after the comment symbol (|%|) renders some ordinary text.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">%  Whereas two spaces creates a monospaced font output.</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">% Three spaces between the |%| and text outputs syntax highlighted code:</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">%</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">%</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">%   for i = 1:10</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">%       disp(x)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">%   end</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">%</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">% You can format _bold_, *italic* and |monospaced| inline as well.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Try copying this code into a new m-file now. You can then publish your new documentation to an HTML file or PDF from the <code>Publish</code> tab in MATLAB:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="matlab-publish.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">On the Publish tab, go to publish</figcaption>
+</figure>
+</div>
+<p>Clicking the down arrow opens a menu, with the bottom option being <code>Edit publishing options...</code> where you can edit the publishing options on a per-file basis. You can choose to output HTML, PDF, latex or XML as well as edit a number of other options.</p>
+<p>If you output to PDF, you’ll get some output that looks like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pdf-output.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">PDF rendered output</figcaption>
+</figure>
+</div>
+<p>You can also publish programmatically, using the <code>publish</code> function (<a href="https://uk.mathworks.com/help/matlab/ref/publish.html">documentation here</a>)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">options</span> <span class="op">=</span> <span class="va">struct</span>(<span class="ss">'format'</span><span class="op">,</span> <span class="ss">'pdf'</span><span class="op">,</span> <span class="ss">'outputDir'</span><span class="op">,</span> <span class="ss">'docs'</span>)<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">publish</span>(<span class="st">"docs.m"</span><span class="op">,</span> <span class="va">options</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Whilst not shown here, these files can contain executable code, <a href="http://ricopic.one/publishing-matlab-code/">see this blog article for an example</a>, and there are many other tools for generating reports and documents from within MATLAB.</p>
+</section>
+</section>
+<section id="version-control" class="level3">
+<h3 class="anchored" data-anchor-id="version-control">Version control</h3>
+<p>Version control is far more than these two words suggest, and enables a far more secure, dynamic and collaborative approach to developing code than without it. Of course, this is far more wide-ranging than just MATLAB, and as RSEs our first recommendation to researchers is to employ a version control system if they don’t already. Spending time learning how to use <code>git</code>, for instance, will pay dividends.</p>
+<section id="why-use-version-control" class="level4">
+<h4 class="anchored" data-anchor-id="why-use-version-control">Why use version control?</h4>
+<p>A version control system (VCS) allows you to capture snapshots of your code as you develop, meaning that you can go back if you want to. Furthermore, you can create <em>branches</em> to try out new ideas without fear of breaking your existing code - your main branch is still there! All this without making numerous copies and archives of your code. A VCS also allows you to merge one branch into another; so when you’re happy with your feature branch (where you try out a new idea), you can combine it with your main branch!</p>
+<p>Using a VCS simply for developing code on your own machine is a great idea. But online platforms such as GitHub and GitLab add a host of excellent tools to facilitate collaboration, project management and distribution of your code.</p>
+</section>
+<section id="which-version-control-system" class="level4">
+<h4 class="anchored" data-anchor-id="which-version-control-system">Which version control system?</h4>
+<p>At the time of writing, there is one answer to this question, namely <a href="https://git-scm.com"><code>git</code></a>. Originally developed in 2006, <code>git</code> has become the <em>de facto</em> standard VCS and for many developers is synonymous with the concept. As a researcher you may, however, come across older codebases controlled with other systems such as Subversion (SVN) or Mercurial, but <code>git</code> is the way to go for new projects at present.</p>
+</section>
+<section id="how" class="level4">
+<h4 class="anchored" data-anchor-id="how">How?</h4>
+<p>This is the one point here in which I can not currently (April 2022, MATLAB release R2022a) recommend the tools provided within MATLAB and would advise alternatives for version control. It may be that MathWorks will put out some improvements in the future, at which time I’ll aim to revise this post.</p>
+<p>Far better (and free) alternatives to MATLAB’s tools exist for interacting with <code>git</code>, my current favourite is the <a href="https://www.gitkraken.com/git-client"><em>GitKraken Client</em></a> - it provides a great user interface with access to most (if not all) of the major operations you’re likely to want to do both with <code>git</code> and GitHub (or GitLab, BitBucket or Azure DevOps). Not to mention it has a great name. Helpfully, most of the terminology used (<em>pull, fetch, rebase, fork, clone</em>) comes from the core tools (<code>git</code> &amp; GitHub) themselves, so anything you learn can generalise to other tools.</p>
+<p>It would be irresponsible to attempt to provide instruction on using <code>git</code> here and there are many resources to learn from, not least the <a href="https://rse.shef.ac.uk/events/">courses</a> run by RSE teams!</p>
+</section>
+</section>
+<section id="testing" class="level3">
+<h3 class="anchored" data-anchor-id="testing">Testing</h3>
+<p>Software testing means writing code that checks that your code is doing its job correctly. Most languages have a method for doing this and it’s an excellent habit to get into.</p>
+<p>At first, stopping to write a test may seem like a hinderance, however you’ll soon find that an automated check to your code will save you time and confusion in the long-run.</p>
+<p>Let’s have a look at writing some simple tests in MATLAB, so you can see what I mean.</p>
+<section id="script-based-testing" class="level4">
+<h4 class="anchored" data-anchor-id="script-based-testing">Script-based ‘testing’</h4>
+<p>Ideally your code should be organised into functions and/or classes, however it is possible to do some level of validation with scripts, by using the <code>assert</code> function. <code>assert</code> checks a condition and throws an error if the condition is false, <em>asserting</em> that the condition is true.</p>
+<p>For example (from the <a href="https://uk.mathworks.com/help/matlab/ref/assert.html"><code>assert</code> documentation</a>)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">minVal</span> <span class="op">=</span> <span class="fl">7</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">x</span> <span class="op">=</span> <span class="fl">26</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="va">assert</span>(<span class="va">minVal</span> <span class="op">&lt;</span> <span class="va">x</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>will throw an error if <code>minVal</code> is greater than <code>x</code>.</p>
+<p>You can use these throughout your scripts to check for some sources of errors and use any condition that returns a logical such as <code>isa()</code> to check a variable’s type or <code>size</code> to check the dimensions of an array.</p>
+<p><code>assert</code> can also take a string argument as a message to print if the condition is not met.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">assert</span>(<span class="va">minVal</span> <span class="op">&lt;</span> <span class="va">x</span><span class="op">,</span> <span class="ss">'value is not greater than minVal'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For information on script-based unit testing in MATLAB, <a href="https://uk.mathworks.com/help/matlab/script-based-unit-tests.html">see the official docs here</a></p>
+</section>
+<section id="function-based-testing" class="level4">
+<h4 class="anchored" data-anchor-id="function-based-testing">Function-based testing</h4>
+<p>If your code is organised into functions (and/or classes), you can use the function-based and class-based testing frameworks to test those functions with a test suite. The function-based testing framework is a little simpler, but a big improvement on the use of <code>assert</code> above.</p>
+<p>Types of test can briefly be categorised as:</p>
+<ul>
+<li><strong>Unit tests</strong> - test individual ‘units’ of code, most often a function.</li>
+<li><strong>Integration tests</strong> - test the operation of multiple units integrated together.</li>
+<li><strong>Regression tests</strong> - test that the overall operation of the code is not damaged by new changes, in other words, that the code has not regressed.</li>
+</ul>
+<p>For a simple example of a <em>unit</em> test, let’s say you have a function called <code>add</code> which adds together two values and returns the result that looks like this:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="va">result</span> <span class="op">=</span> <span class="va">add</span>(<span class="va">a</span><span class="op">,</span><span class="va">b</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">result</span> <span class="op">=</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Generally, you might have a folder in your project called <code>tests</code>, inside which you put a file called, for instance, <code>test_add.m</code> with the contents:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">%% Main function to generate tests - you don't need to change this</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="va">tests</span> <span class="op">=</span> <span class="va">exampleTest</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">tests</span> <span class="op">=</span> <span class="va">functiontests</span>(<span class="va">localfunctions</span>)<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">%% Test Functions</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="va">test_add</span>(<span class="va">testCase</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">a</span> <span class="op">=</span> <span class="fl">1</span><span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="va">b</span> <span class="op">=</span> <span class="fl">2</span><span class="op">;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="va">actual_result</span> <span class="op">=</span> <span class="va">add</span>(<span class="va">a</span><span class="op">,</span><span class="va">b</span>)<span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="va">expected_result</span> <span class="op">=</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span><span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="va">verifyEqual</span>(<span class="va">testCase</span><span class="op">,</span> <span class="va">actual_result</span><span class="op">,</span> <span class="va">expected_result</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Similarly to what we saw above, an error will be raised if the wrong result is produced. However in this case, rather than running as part of your main code, this test suite is run during development when making changes to verify that everything is still working as expected. (Perhaps as part of <a href="#continuous-integration-and-continuous-deployment">continuous integration below</a>).</p>
+<p>We can run all of our tests for a project from the MATLAB desktop under the <em>Editor</em> tab, including running tests with the debugger.</p>
+<p><img src="run-tests.png" class="img-fluid"></p>
+</section>
+<section id="next-steps-in-testing" class="level4">
+<h4 class="anchored" data-anchor-id="next-steps-in-testing">Next steps in testing</h4>
+<p>As mentioned above, MATLAB provides more featureful tools for testing under the <a href="https://uk.mathworks.com/help/matlab/class-based-unit-tests.html">class-based testing framework</a>; tools for <a href="https://uk.mathworks.com/help/matlab/app-testing-framework.html">testing applications</a> and more. I may put together a blog post on these in the future.</p>
+</section>
+</section>
+<section id="licensingopen-source" class="level3">
+<h3 class="anchored" data-anchor-id="licensingopen-source">Licensing/open source</h3>
+<p>It is a common misconception that MATLAB code can not be released as open source because MATLAB itself is a proprietary language. This is not the case at all, just look at <a href="https://uk.mathworks.com/matlabcentral/fileexchange/">MATLAB’s File Exchange</a> to see thousands of examples of users sharing their code.</p>
+<p>Software licensing is perhaps too big a discussion to be a subsection of a blog post, but the takeaway points here should be:</p>
+<ol type="1">
+<li>Release your code publicly, let others use it and cite your research and build upon it, have a bigger impact on the research community,</li>
+<li>If you do not include a license at all, nobody can legally use your code, include a license that permits the kind of use that you want to, check out <a href="https://choosealicense.com/" class="uri">https://choosealicense.com/</a> to help you pick one,</li>
+</ol>
+</section>
+<section id="collaborative-hostinggithubgitlab" class="level3">
+<h3 class="anchored" data-anchor-id="collaborative-hostinggithubgitlab">Collaborative hosting/GitHub/GitLab</h3>
+<p>Hosting your code on an online hosting platform such as GitHub or GitLab brings a tremendous number of benefits, including (but not limited to):</p>
+<ul>
+<li>Acting as a reliable, remote backup,</li>
+<li>Facilitating collaboration and sharing of code,</li>
+<li>A plethora of project management tools alongside your code, making it easier to keep track of what work needs doing,</li>
+<li>Public hosting of your code, making it easier to share,</li>
+<li>Continuous Integration/Deployment tools (e.g.&nbsp;GitHub Actions) which, for instance, can be used to render documentation, run tests and many more things,</li>
+</ul>
+<p>Whilst not difficult to learn, there is too much to cover here, but in essence the basic process is:</p>
+<ol type="1">
+<li>Start a new repository on GitHub,</li>
+<li>Push your local repository (version controlled by <code>git</code>) to the remote on GitHub,</li>
+<li>Make changes on a new branch locally and push them to GitHub,</li>
+<li>Open a pull request to discuss merging your branch into the main one,</li>
+<li>Merge the changes,</li>
+<li>Locally, pull the new changes on the main branch,</li>
+<li>Continue working with the new changes and repeat!</li>
+</ol>
+</section>
+<section id="matlab-projects" class="level3">
+<h3 class="anchored" data-anchor-id="matlab-projects">MATLAB “Projects”</h3>
+<p>Since R2019a, MATLAB has included the <a href="https://uk.mathworks.com/help/matlab/projects.html"><code>Projects</code> tool</a> with the goal of improving collaboration and portability. Have you ever been sent code by a colleague and found that you can’t run it at all because you’re missing a bunch of dependent toolboxes and functions? This is one of the problems that <code>Projects</code> attempt to solve.</p>
+<p>By creating a <code>Project</code> and adding all the relevant files needed to run the code, you should be able to pass on the code and project file (<code>.prj</code>) to someone else; they can open the <code>Project</code> and all the right files will be added to the path, any particular actions that you specify can be run, among other actions.</p>
+<p><code>Projects</code> also allow you to run a dependency analysis, to report which other code yours depends on, and therefore needs to be considered for reproducibility.</p>
+<p><strong>Remember!</strong> include your <code>.prj</code> file under version control.</p>
+</section>
+<section id="continuous-integration-and-continuous-deployment" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-integration-and-continuous-deployment">Continuous integration and continuous deployment</h3>
+<p>These might sound pretty scary, but all I really mean is: “<strong>actions that run automatically</strong>”, maybe when you make changes to your code, or on a particular schedule for instance. These can do things such as running tests or updating the documentation. There are lots of tools for this such as <em>Travis</em>, <em>CircleCI</em>, <em>Jenkins</em> <em>etc</em>. but here I’m going to concentrate on <em>GitHub Actions</em> because it’s an increasingly popular tool and one that I’ve used with MATLAB myself.</p>
+<p>In brief, GitHub actions is a really, really, <em>really</em> useful tool! Some examples of things I’ve done with actions when using MATLAB are: running tests when a pull request is made so that we can see that the new code works and doesn’t break anything before we merge it; automatically compiling a standalone application and an installer for any new releases; and at the same time publishing a PDF of user documentation and uploading it to the project’s release page automatically.</p>
+<p>MathWorks have made a number of actions available for use on GitHub under the <a href="https://github.com/matlab-actions">matlab-actions</a> organisation, for an overview, <a href="https://github.com/matlab-actions/overview">see this repo</a>.</p>
+<p>To learn more about GitHub actions, have a look at <a href="https://docs.github.com/en/actions/learn-github-actions">this learning resource</a>. <em>Basically</em> all you have to do is include a <code>.yml</code> file in the <code>.github/workflows/</code> folder of your project hosted on GitHub.</p>
+<p>The actions available for MATLAB at present are reasonably limited, but versatile, at the moment they’re available to:</p>
+<ul>
+<li><a href="https://github.com/matlab-actions/run-tests">Run Tests</a> - to automatically run a test suite, and</li>
+<li><a href="https://github.com/matlab-actions/run-command">Run a MATLAB command</a> - which allows you to do anything you can write the MATLAB code for, for instance:
+<ul>
+<li>you could run MATLAB’s <a href="https://uk.mathworks.com/help/matlab/ref/checkcode.html"><code>checkcode</code> function</a> against the repo to look for problems in the code so you don’t have to look for them manually,</li>
+<li>or publish your [documentation][#Documentation] as HTML and use it to make a <a href="https://pages.github.com/">GitHub pages</a> website containing docs for your code,</li>
+<li>or when a new release is made, build and share your toolbox to the MATLAB file exchange!</li>
+</ul></li>
+</ul>
+<p>You can also combine these with one of the many actions from the <a href="https://github.com/marketplace?type=actions">GitHub actions marketplace</a> even further extending the possibilities!</p>
+<p>These MATLAB-specific actions can be run on GitHub actions’ cloud computing for free for <em>public</em> projects hosted on GitHub (just another reason to go open source! <span class="emoji" data-emoji="grinning">😀</span>), but if your project is private, you can still use GitHub actions by setting up a <em>self-hosted</em> runner on your own computing infrastructure, I used a VM hosted by my university to do this for a private project. Note that other actions can be run on GitHub for private repos, but private projects only get a limited amount of free time per month.</p>
+</section>
+<section id="compiling-standalone-applications" class="level3">
+<h3 class="anchored" data-anchor-id="compiling-standalone-applications">Compiling standalone applications</h3>
+<p>One way to solve the challenge of getting your code to run on other people’s computers, particularly if they don’t have a MATLAB license, is to consider building your code as a standalone application. This takes your MATLAB source code and bundles it in such a way that it can be run on a machine without a MATLAB license, and without MATLAB installed - helpful in a number of situations.</p>
+<p>This can be achieved through <a href="https://uk.mathworks.com/help/compiler/create-and-install-a-standalone-application-from-matlab-code.html">point and click menus</a> or, better yet, by <a href="https://uk.mathworks.com/help/compiler/standalone-applications.html">writing a script to run</a> that runs the build operation.</p>
+<p><strong>Note</strong> the application must be built for each operating system (Windows, Mac OS, Linux etc) and generally the build process must be run on a compatible operating system. For instance, if you want to build your program to run on Windows, the build command should be run from within MATLAB on Windows.</p>
+<p>This is a useful tool, for instance if you want to run analysis on a machine without MATLAB installed - but isn’t a complete solution to reproducibility, and openly sharing your source code should be the first thing you think of, in my opinion.</p>
+</section>
+<section id="publishing-your-code-with-a-research-paper" class="level3">
+<h3 class="anchored" data-anchor-id="publishing-your-code-with-a-research-paper">Publishing your code with a research paper</h3>
+<p>Once you’ve done all this, how do we get to the business of actually publishing code alongside our research?! Well fortunately, everything is fairly straightforward from this point!</p>
+<p>The first thing I’d recommend is asking a friend or colleague to attempt to reproduce your results following the instructions provided in your online repository. Remember to document where to get your data from! You could even consider submitting your work to a <a href="https://www.reprohack.org/">reprohack event</a>! Essentially, this process of getting someone else who doesn’t know about the code to try and run it and get the same results should highlight gaps in your documentation, allowing you to fix them before sending your code out to the world.</p>
+<p>By hosting your code on a public repository with a tool like GitHub, you’ll be able to link to the code as it was at the time of submission. At this stage, I’d recommend creating a tag to indicate the commit that the repository was at when you produced the final results. On GitHub, you can alternatively create a ‘release’. You can just use a version number and quote this in the description of your methods.</p>
+<p>Furthermore, it’s possible to <a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">use Zenodo to create a DOI for your GitHub release</a> so that there is a persistent identifier for that version of the codebase.</p>
+</section>
+<section id="and-finally" class="level3">
+<h3 class="anchored" data-anchor-id="and-finally">And finally…</h3>
+<p>Just try your best! Most researchers still don’t publish their code and very few projects are reproducible, so anything you can do to improve your work will get you closer.</p>
+<p>If you want to discuss how to make your code more reproducible and don’t know what to do, <a href="../../support/code-clinic/">book a code clinic</a> with the RSE and Research IT teams at The University of Sheffield to see how we can help!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

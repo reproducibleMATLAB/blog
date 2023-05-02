@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="David Wilby">
+
+<title>repliMAT blog - An attempt to give the people what they want..</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">repliMAT blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/reproducibleMATLAB/blog" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">An attempt to give the people what they want..</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">reproducibility</div>
+                <div class="quarto-category">guide</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>David Wilby </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">2nd May 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#who-was-surveyed" id="toc-who-was-surveyed" class="nav-link active" data-scroll-target="#who-was-surveyed">Who was surveyed?</a></li>
+  <li><a href="#whats-the-current-situation" id="toc-whats-the-current-situation" class="nav-link" data-scroll-target="#whats-the-current-situation">What’s the current situation?</a>
+  <ul class="collapse">
+  <li><a href="#version-controlsource-code-management" id="toc-version-controlsource-code-management" class="nav-link" data-scroll-target="#version-controlsource-code-management">Version control/source code management</a></li>
+  <li><a href="#dependency-and-environment-management" id="toc-dependency-and-environment-management" class="nav-link" data-scroll-target="#dependency-and-environment-management">Dependency and Environment Management</a></li>
+  </ul></li>
+  <li><a href="#usage-of-existing-matlab-tools-and-language-features" id="toc-usage-of-existing-matlab-tools-and-language-features" class="nav-link" data-scroll-target="#usage-of-existing-matlab-tools-and-language-features">Usage of existing MATLAB tools and language features</a></li>
+  <li><a href="#demand-for-training" id="toc-demand-for-training" class="nav-link" data-scroll-target="#demand-for-training">Demand for training</a></li>
+  <li><a href="#general-preferences-on-training-and-guidance" id="toc-general-preferences-on-training-and-guidance" class="nav-link" data-scroll-target="#general-preferences-on-training-and-guidance">General Preferences on Training and Guidance</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><img src="image.png" class="img-fluid"></p>
+<p><em>Image produced by <a href="https://beta.dreamstudio.ai/generate">DreamStudio</a></em></p>
+<p>To help me get started developing a training resource for reproducible MATLAB, I began with surveying researchers who use it to find out what they know already, what they’d like to know and how they’d like to learn things. I have some advantage and some disadvantage here, at least for the time-being, as a former researcher who got their start through MATLAB, I have some idea of the level of knowledge and the concerns that researchers have. However, I’m only a sample size of one and I’ve also been acting as a research software engineer for a few years, so I needed to get out of my bubble, and what better way to do that than with <strong>graphs</strong> <span class="emoji" data-emoji="grin">😁</span>.</p>
+<p>You can see the questions I asked and the contents of the survey alongside the <a href="https://github.com/reproducibleMATLAB/survey/tree/main/data/raw">data</a>, <a href="https://github.com/reproducibleMATLAB/survey/blob/main/analysis.mlx">analysis and results</a> at the <a href="https://github.com/reproducibleMATLAB/survey">survey’s repository</a>. Naturally, it was important the survey’s analysis itself was reproducible, so the code can be downloaded and <em>hopefully</em> run reproducibly. The full analysis can be seen <a href="https://reproduciblematlab.github.io/survey/analysis.html" target="_blank">here</a>.</p>
+<section id="who-was-surveyed" class="level2">
+<h2 class="anchored" data-anchor-id="who-was-surveyed">Who was surveyed?</h2>
+<p>The survey was circulated via social media (e.g Twitter, Mastodon) and by a few mailing lists via research software engineers contacted through the RSE Society slack. At the University of Sheffield, where I work, it was also sent out to all users of MATLAB. These were chosen deliberately to target users in a university research setting. We can see from the raw data that the vast majority of respondents were based at academic research institutions, most of which were universities. There were no responses that needed to be removed as a result of being outside of this target group. One caveat is that, without targeting more user groups consisting of all MATLAB users, many of the respondents may have been likely to be more expert than a representative sample by being on RSE mailing lists, following RSEs on social media etc. However, as you’ll see, we collected self-perceived experience levels, allowing the data to be categorised on that basis.</p>
+<p>To start with, I asked the respondents to indicate their self-perceived level of expertise with MATLAB, and with programming in general. Let’s divide this up according to their reported career stage, note that it was possible for respondents to select multiple career stages.</p>
+<p><img src="experience.png" class="img-fluid"></p>
+</section>
+<section id="whats-the-current-situation" class="level2">
+<h2 class="anchored" data-anchor-id="whats-the-current-situation">What’s the current situation?</h2>
+<p>Now we can get into the questions that provide more insight that will be relevant to my training course. Firstly, I wanted to know what tools are currently used with MATLAB when it comes to “good practice” and reproducible development.</p>
+<section id="version-controlsource-code-management" class="level3">
+<h3 class="anchored" data-anchor-id="version-controlsource-code-management">Version control/source code management</h3>
+<p>Version control (or source code management) is an exceptionally valuable tool in any development of code. I wanted to know how likely our respondents were to use source code management tools such as git as well as online hosting and collaboration platforms such as GitHub. Additionally, I was interested to see whether there would be a difference in usage when it comes to working in MATLAB versus other languages.</p>
+<p>For this and the next few questions, I asked participants to respond “Not aware of”, “Aware of but don’t use”, “Aware of and use with MATLAB”, “Aware of and use outside MATLAB”, and they could choose more than one if they wanted to. In the analysis I’ve derived another classification “Use outside but not with MATLAB” which is what it sounds like.</p>
+<p><img src="versioncontrol.png" class="img-fluid"></p>
+<p>Without doing some statistical analysis, it is of course diffcult to draw precise conclusions, but let’s treat the findings qualatively. (Note that if you want to do some stats here, you can contribute back to this repository via a pull request on GitHub).</p>
+<p>For this question, I was pleasantly surprised to see that ~90% of respondents were aware of version control, higher than perhaps I might have expected, though our survey respondents may have been a slightly self-selected population. What’s particularly interesting to me here is the ~25% who use version control outside of MATLAB, but not with it. Depending on whether participants interpreted the ‘Use outside MATLAB’ and ‘Use outside but not with MATLAB’ as being equivalent or not (that’s a lesson for me on study design!), this could be seen to be as high as ~50%. Without digging further into why the “Aware of but don’t use” group responded that way, we can’t tell why, but we may be able to conclude that out of this group of 239 MATLAB users, up to around 75% don’t use version control when working with MATLAB, despite most being aware of it.</p>
+<p>Additionally, we asked respondents to let us know which method they use to interact with git. There are lots of <em>clients</em> to use, including command-line and various graphical types, including the interface in the MATLAB IDE itself.</p>
+<p>Immediately we can see that the biggest group here are those who choose not to use git with MATLAB at all. (I haven’t analysed how many of this group don’t use git at all, though you could contribute that analysis via a pull request <span class="emoji" data-emoji="grin">😁</span>)</p>
+<p>Out of those who use git when working with MATLAB there’s a fairly even spread across the interfaces mentioned including the native git command line interface, tools in other IDEs such as VScode or pycharm, GUIs such as GitHub Desktop or GitKraken client, and a fairly good chunk of users who do use the tools built into MATLAB itself. It’s worth pointing out here that the git integration in the GUI seems to have some nice impovements in the new MATLAB IDE launched recently in R2023a.</p>
+<p><img src="gitclients.png" class="img-fluid"></p>
+<p>Next, let’s take a look at GitHub/GitLab/BitBucket.</p>
+<p><img src="github.png" class="img-fluid"></p>
+<p>Straight away, we can see that there’s an increase in awareness in relation to the version control tools themselves, more participants are aware of GitHub than they are of git, which might be a lesson to those of us who support researchers. Otherwise the pattern is broadly similar here, only 20% use GitHub when working with MATLAB.</p>
+</section>
+<section id="dependency-and-environment-management" class="level3">
+<h3 class="anchored" data-anchor-id="dependency-and-environment-management">Dependency and Environment Management</h3>
+<p>When it comes to reproducibility, managing dependencies and environment - i.e.&nbsp;the software that your code relies upon to run - is the fundamental challenge. It’s not an easy thing to do, but once you do, it can allow you to run your code almost anywhere. In many ways this is the crux of reproducibility of research analysis.</p>
+<p>For MATLAB, I found this a particularly difficult question to pose, and I’m not sure I’ve done the best job. Participants were asked to indicate their level of awareness and use of “Dependency and/or environment management (e.g.&nbsp;<code>conda</code>, <code>renv</code>, etc.)” which gives the examples <code>conda</code> and <code>renv</code> - common environment management tools in python and R respectively. However, to my knowledge, MATLAB doesn’t have equivalent tools. The closest is perhaps the “Project”, which we’ll investigate further later on.</p>
+<p><img src="depsandenvs.png" class="img-fluid"></p>
+<p>Here, it looks like most (if not all) of those participants who use these tools outside MATLAB, might not use them with MATLAB, but perhaps this is because conda and renv aren’t relevant and participants were left to themselves to work out what dependency and environment managment looks like in MATLAB. However, some respondents do use these tools with MATLAB apparently, so I’m unsure what conclusion to draw here - possibly that I posed the question poorly. Either way, it looks like a fairly small number use dependency or environment management with MATLAB, through lack of availability of tools or awareness of the concepts.</p>
+<p>We also asked similar questions about continuous integration, testing and literate programming, which you can see the results for <a href="https://reproduciblematlab.github.io/survey/analysis.html" target="_blank">here</a>.</p>
+</section>
+</section>
+<section id="usage-of-existing-matlab-tools-and-language-features" class="level2">
+<h2 class="anchored" data-anchor-id="usage-of-existing-matlab-tools-and-language-features">Usage of existing MATLAB tools and language features</h2>
+<p>Next up, participants were asked to indicate which of a list of MATLAB features relating to reproducibility and code quality that they use.</p>
+<p><img src="matlabtools.png" class="img-fluid"></p>
+<p>Out of the list, language features such as functions and classes were the most popular, but live scripts also see a high level of usage here as well, which is great! The other tools such as projects, source control, testing and custom toolbox development, see less use by this group, but still a fairly good proportion at around 20%.</p>
+<p>These are some of the tools that I consider to be “best practice”, so it’s great to see that there is some adoption by researchers.</p>
+</section>
+<section id="demand-for-training" class="level2">
+<h2 class="anchored" data-anchor-id="demand-for-training">Demand for training</h2>
+<p>Importantly, I wanted to find out what the relative demand for learning some of these concepts and tools might be, as well as the training formats preferred.</p>
+<p>Across the topics asked about (Projects, testing, live scripts, version control, toolbox development, publication and licensing) there was a consistent demand for training of around 25-30% of participants indicating some kind of demand. The preference for structured training versus self-guided learning varied between topics, with some of the perhaps more difficult topics leaning more strongly towards structured training, though there was a substantial demand for both for every topic. This is something I was keen to know about with regards to whether when developing materials one should consider the different demands of these two formats.</p>
+<p><img src="trainingdemand.png" class="img-fluid"></p>
+<p>There aren’t any particularly stark findings here, the message seems to be that there’s a mixed bag of attitudes towards demand for training in these areas with no striking spikes or absences.</p>
+<p>Interestingly though, when it comes to software licensing, in comparison to the other topics asked about here, there was a rise in lack of interest for training, but a drop in those participants who were already familiar with the topic. When it comes to reproducibility and open research, licensing is what legally allows other people to use your code, so whilst the participants indicated a lack of demand for training here, I might suggest that this result indicates a greater need for it.</p>
+</section>
+<section id="general-preferences-on-training-and-guidance" class="level2">
+<h2 class="anchored" data-anchor-id="general-preferences-on-training-and-guidance">General Preferences on Training and Guidance</h2>
+<p>Finally, we looked into the preferences of the participants in general when it comes to training, including the formats of training and where they turn to for guidance.</p>
+<p>As you might predict, people like all sorts of different training formats, even blogs and in-person lectures, which were the least popular, though still with a substantial share each.</p>
+<p>I think that this shows that offering training in a variety of formats, and perhaps designing training to be suitable for them, might enhance the utility of the materials and help more researchers to get more out of them.</p>
+<p><img src="trainingpreference.png" class="img-fluid"></p>
+<p>When it comes to seeking guidance it looks like our respondents are using a mixture of online sources as well as colleagues, but that support through their institutions are either not being used, or aren’t available.</p>
+<p><img src="guidance.png" class="img-fluid"></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
