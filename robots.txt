@@ -1,1 +1,1 @@
-Sitemap: https://reproducibleMATLAB.io/blog/sitemap.xml
+Sitemap: https://reproducibleMATLAB.github.io/blog/sitemap.xml
