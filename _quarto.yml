@@ -3,7 +3,7 @@ project:
 
 website:
   title: "repliMAT blog"
-  site-url: https://reproducibleMATLAB.io/blog
+  site-url: https://reproducibleMATLAB.github.io/blog
   description: "Research reproducibility with MATLAB"
   navbar:
     right:
