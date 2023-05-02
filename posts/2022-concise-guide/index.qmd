@@ -7,6 +7,7 @@ categories: [reproducibility, guide]
 image: "image.png"
 toc: true
 toc-expand: true
+abstract: "My first thoughts about how to do MATLAB reproducibly."
 ---
 
 *[This post was originally published on the University of Sheffield Research Software Engineering Team blog in May 2022](https://rse.shef.ac.uk/blog/2022-05-05-concise-guide-to-reproducible-matlab/)*
