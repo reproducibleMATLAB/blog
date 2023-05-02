@@ -1,0 +1,18 @@
+---
+title: "About"
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/reproducibleMATLAB
+
+---
+
+This is the blog of the `repliMAT` project - a resource for reproducible research in MATLAB.
+
+You can find the main `repliMAT` project at [reproducibleMATLAB.github.io](https://reproducibleMATLAB.github.io).
+
+On this blog you'll find posts relating to the concept of research reproducibility in MATLAB.
+
+The blog is developed using the excellent [Quarto](https://quarto.org/) project.

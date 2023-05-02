@@ -1,0 +1,20 @@
+project:
+  type: website
+
+website:
+  title: "repliMAT blog"
+  site-url: https://reproducibleMATLAB.io/blog
+  description: "Research reproducibility with MATLAB"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/reproducibleMATLAB/blog
+      - icon: rss
+        href: index.xml
+format:
+  html:
+    from: markdown+emoji
+    theme: 
+      light: litera
+      dark: [litera, theme-dark.scss]
