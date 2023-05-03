@@ -10,7 +10,7 @@
 <atom:link href="https://reproducibleMATLAB.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Research reproducibility with MATLAB</description>
 <generator>quarto-1.3.340</generator>
-<lastBuildDate>Mon, 01 May 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 02 May 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>An attempt to give the people what they want..</title>
   <dc:creator>David Wilby</dc:creator>
@@ -80,15 +80,19 @@
 <p><img src="https://reproducibleMATLAB.github.io/blog/posts/2023-05-02-survey/trainingpreference.png" class="img-fluid"></p>
 <p>When it comes to seeking guidance it looks like our respondents are using a mixture of online sources as well as colleagues, but that support through their institutions are either not being used, or aren’t available.</p>
 <p><img src="https://reproducibleMATLAB.github.io/blog/posts/2023-05-02-survey/guidance.png" class="img-fluid"></p>
+</section>
+<section id="what-to-conclude" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-conclude">What to conclude?</h2>
+<p>For one, study design isn’t simple! But generally speaking it looks like most of the survey’s respondents would like to see more training, of varying formats, across most of the topics. Which is great because that’s just what we’re producing!</p>
 
 
 </section>
 
  ]]></description>
-  <category>reproducibility</category>
-  <category>guide</category>
+  <category>survey</category>
+  <category>training</category>
   <guid>https://reproducibleMATLAB.github.io/blog/posts/2023-05-02-survey/index.html</guid>
-  <pubDate>Mon, 01 May 2023 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 02 May 2023 00:00:00 GMT</pubDate>
   <media:content url="https://reproducibleMATLAB.github.io/blog/posts/2023-05-02-survey/image.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -568,7 +572,7 @@ font-style: inherit;">end</span></span></code></pre></div>
   <category>reproducibility</category>
   <category>guide</category>
   <guid>https://reproducibleMATLAB.github.io/blog/posts/2022-concise-guide/index.html</guid>
-  <pubDate>Mon, 01 May 2023 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 02 May 2023 00:00:00 GMT</pubDate>
   <media:content url="https://reproducibleMATLAB.github.io/blog/posts/2022-concise-guide/image.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 </channel>
