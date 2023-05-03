@@ -3,7 +3,7 @@ title: "An attempt to give the people what they want.."
 author: "David Wilby"
 date: "2023-05-02"
 date-format: "Do MMM YYYY"
-categories: [reproducibility, guide]
+categories: [survey, training]
 image: "image.png"
 toc: true
 toc-expand: true
@@ -104,3 +104,10 @@ I think that this shows that offering training in a variety of formats, and perh
 When it comes to seeking guidance it looks like our respondents are using a mixture of online sources as well as colleagues, but that support through their institutions are either not being used, or aren't available.
 
 ![](guidance.png)
+
+## What to conclude?
+For one, study design isn't simple! But generally speaking it looks like most of the survey's respondents would like to see more training, of varying formats, across most of the topics. Which is great because that's just what we're producing! Ironically for this blog, it seems that the least popular source of training material was the blog and that more interactive formats are preferred, go figure!
+
+
+When it comes to subject matter, as mentioned above, I may add some more training on licensing than originally planned, or at least some general guidance, though since this is a topic that's decoupled from MATLAB itself, it doesn't necessarily need to be within the MATLAB reproducibility resource that's under development.
+
