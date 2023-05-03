@@ -1,5 +1,5 @@
 ---
-title: "An attempt to give the people what they want.."
+title: "Reproducible MATLAB: what do the people want?"
 author: "David Wilby"
 date: "2023-05-02"
 date-format: "Do MMM YYYY"
