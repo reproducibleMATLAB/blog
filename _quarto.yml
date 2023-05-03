@@ -8,8 +8,12 @@ website:
   navbar:
     right:
       - about.qmd
+      - text: repliMAT
+        href: https://reproducibleMATLAB.github.io
+        target: _blank
       - icon: github
         href: https://github.com/reproducibleMATLAB/blog
+        target: _blank
       - icon: rss
         href: index.xml
 format:
