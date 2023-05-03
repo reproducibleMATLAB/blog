@@ -4,6 +4,7 @@ project:
 website:
   title: "repliMAT blog"
   site-url: https://reproducibleMATLAB.github.io/blog
+  twitter-card: true
   description: "Research reproducibility with MATLAB"
   navbar:
     right:
