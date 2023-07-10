@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://reproducibleMATLAB.github.io/blog/posts/2023-05-02-survey/index.html</loc>
-    <lastmod>2023-05-03T15:49:08.583Z</lastmod>
-  </url>
-  <url>
-    <loc>https://reproducibleMATLAB.github.io/blog/posts/2022-concise-guide/index.html</loc>
-    <lastmod>2023-05-03T15:49:11.363Z</lastmod>
-  </url>
-  <url>
     <loc>https://reproducibleMATLAB.github.io/blog/about.html</loc>
-    <lastmod>2023-05-03T15:49:11.675Z</lastmod>
+    <lastmod>2023-07-10T08:58:19.502Z</lastmod>
+  </url>
+  <url>
+    <loc>https://reproducibleMATLAB.github.io/blog/posts/2023-05-02-survey/index.html</loc>
+    <lastmod>2023-07-10T08:58:18.690Z</lastmod>
   </url>
   <url>
     <loc>https://reproducibleMATLAB.github.io/blog/index.html</loc>
-    <lastmod>2023-05-03T15:49:12.183Z</lastmod>
+    <lastmod>2023-07-10T08:58:15.098Z</lastmod>
+  </url>
+  <url>
+    <loc>https://reproducibleMATLAB.github.io/blog/posts/2022-concise-guide/index.html</loc>
+    <lastmod>2023-07-10T08:58:17.998Z</lastmod>
+  </url>
+  <url>
+    <loc>https://reproducibleMATLAB.github.io/blog/posts/2023-07-10-can-matlab-be-reproducible/index.html</loc>
+    <lastmod>2023-07-10T08:58:19.122Z</lastmod>
   </url>
 </urlset>

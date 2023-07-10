@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="David Wilby">
 
-<title>repliMAT blog - blog</title>
+<title>repliMAT blog - Can MATLAB projects ever be reproducible?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -63,40 +62,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-author','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="alternate" type="application/rss+xml" title="repliMAT blog" href="index.xml"><meta name="twitter:title" content="repliMAT blog - blog">
+<meta name="twitter:title" content="repliMAT blog - Can MATLAB projects ever be reproducible?">
+<meta name="twitter:description" content="Is it possible for a proprietary tool to result in reproducible research?">
 <meta name="twitter:image" content="https://reproducibleMATLAB.github.io/blog/posts/2023-07-10-can-matlab-be-reproducible/image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -108,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">repliMAT blog</span>
     </a>
   </div>
@@ -119,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -132,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -147,175 +116,77 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Can MATLAB projects <em>ever</em> be reproducible?</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">debate</div>
+                <div class="quarto-category">reproducibility</div>
+                <div class="quarto-category">open research</div>
+                <div class="quarto-category">open scholarship</div>
+                <div class="quarto-category">open science</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>David Wilby </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">10th Jul 2023</p>
+      </div>
+    </div>
     
       
     </div>
     
+  <div>
+    <div class="abstract">
+      <div class="abstract-title">Abstract</div>
+      Is it possible for a proprietary tool to result in reproducible research?
+    </div>
+  </div>
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="debate">debate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="guide">guide <span class="quarto-category-count">(1)</span></div><div class="category" data-category="open research">open research <span class="quarto-category-count">(1)</span></div><div class="category" data-category="open scholarship">open scholarship <span class="quarto-category-count">(1)</span></div><div class="category" data-category="open science">open science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="reproducibility">reproducibility <span class="quarto-category-count">(2)</span></div><div class="category" data-category="survey">survey <span class="quarto-category-count">(1)</span></div><div class="category" data-category="training">training <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
+<p><img src="image.jpg" class="img-fluid"></p>
+<p><em>Image produced by <a href="https://stablediffusionweb.com/#demo">Stable Diffusion</a></em></p>
+<p>MATLAB is a proprietary language and software. It is a product, produced by MathWorks and as such they must protect their product. This is completely reasonable in my opinion. But when that tool is used to conduct research, and reproducibility is a valuable characteristic of research, its proprietary nature is in conflict with the goal of reproducibility.</p>
+<p>Less than an hour ago, a colleague shared an <a href="https://www.r-bloggers.com/2022/11/open-source-is-a-hard-requirement-for-reproducibility/" target="_blank">article published on R bloggers</a> which touched on some important questions I have considered when it comes to reproducible MATLAB.</p>
+<p>The article makes the point that for proprietary languages such as MATLAB (as well as others such as Stata or SAS), reproducibility is fundamentally hindered. I couldn’t agree more! Which, as the author of a blog called “Reproducible MATLAB”, may come as a surprise. Let me explain.</p>
+<p>Firstly, let’s clear up a technical question. One potential limitation of proprietary software described in the article is potential for limited availability of previous versions of the software used to generate a result. In the case of MATLAB, as it turns out (I had to go and check), you can download many (if not all) previous versions going back to R11.1, released in 1999. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Then I think that things get a bit more philosophical and we have to consider how hard our definition of reproducibility is. Arguably, this definition could be completely binary: an analysis is either <em>completely</em> reproducible, or it’s <strong>not</strong> reproducible. This is probably the only sensible definition of reproducibility in research, but it puts some possibly unrealistic expectations on researchers who are, for the most part, just trying their best.</p>
+<p>When it comes to proprietary software like MATLAB, my view is that it’s not possible to produce an idealistically reproducible piece of research using this tool. Since it puts a requirement on the end user to have access to a costly piece of software, which they may not, and if they don’t then they can’t reproduce the original work.</p>
+<p><em>However</em>: if a researcher has <em>already</em> produced some research using MATLAB, my stance is that it is fundamentally an improvement to make that research as reproducible as they can, rather than the alternative, which tends to be not making it reproducible at all.</p>
+<p>So I suppose my preference would be for reseachers to conduct research in entirely open source tooling, but if they’re already using something proprietary then the pressures of the research world make it very unlikely that they will translate the work into an entirely OSS project. Therefore, it’s preferable to make something <em>nearly</em> reproducible, using a proprietary tool, if absolutely necessary.</p>
 
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="debate,reproducibility,open research,open scholarship,open science" data-listing-date-sort="1688947200000" data-listing-file-modified-sort="1688979474614" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/2023-07-10-can-matlab-be-reproducible/index.html"> <img src="./posts/2023-07-10-can-matlab-be-reproducible/image.jpg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/2023-07-10-can-matlab-be-reproducible/index.html">
-<h3 class="no-anchor listing-title">
-Can MATLAB projects <em>ever</em> be reproducible?
-</h3>
-<div class="listing-subtitle">
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('debate'); return false;">
-debate
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('reproducibility'); return false;">
-reproducibility
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('open research'); return false;">
-open research
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('open scholarship'); return false;">
-open scholarship
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('open science'); return false;">
-open science
-</div>
-</div>
-<a href="./posts/2023-07-10-can-matlab-be-reproducible/index.html">
-<div class="listing-description">
-<p>Is it possible for a proprietary tool to result in reproducible research?</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/2023-07-10-can-matlab-be-reproducible/index.html">
-<div class="listing-date">
-10th Jul 2023
-</div>
-<div class="listing-author">
-David Wilby
-</div>
-<div class="listing-reading-time">
-3 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="reproducibility,guide" data-listing-date-sort="1682985600000" data-listing-file-modified-sort="1688979474606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20">
-<div class="thumbnail">
-<p><a href="./posts/2022-concise-guide/index.html"> <img src="./posts/2022-concise-guide/image.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/2022-concise-guide/index.html">
-<h3 class="no-anchor listing-title">
-A ‘concise’ guide to reproducible MATLAB projects
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('reproducibility'); return false;">
-reproducibility
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('guide'); return false;">
-guide
-</div>
-</div>
-<a href="./posts/2022-concise-guide/index.html">
-<div class="listing-description">
-<p>My first thoughts about how to do MATLAB reproducibly.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/2022-concise-guide/index.html">
-<div class="listing-date">
-2nd May 2023
-</div>
-<div class="listing-author">
-David Wilby
-</div>
-<div class="listing-reading-time">
-20 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="survey,training" data-listing-date-sort="1682985600000" data-listing-file-modified-sort="1688979474610" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
-<div class="thumbnail">
-<p><a href="./posts/2023-05-02-survey/index.html"> <img src="./posts/2023-05-02-survey/image.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/2023-05-02-survey/index.html">
-<h3 class="no-anchor listing-title">
-Reproducible MATLAB: what do the people want?
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('survey'); return false;">
-survey
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('training'); return false;">
-training
-</div>
-</div>
-<a href="./posts/2023-05-02-survey/index.html">
-<div class="listing-description">
-<p>Surveying MATLAB users in research on the topic of reproducibility.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/2023-05-02-survey/index.html">
-<div class="listing-date">
-2nd May 2023
-</div>
-<div class="listing-author">
-David Wilby
-</div>
-<div class="listing-reading-time">
-10 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<ol>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/MATLAB#Release_history" target="_blank">Wikipedia: MATLAB (release history)</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
