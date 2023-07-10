@@ -1,0 +1,35 @@
+---
+title: "Can MATLAB projects _ever_ be reproducible?"
+author: "David Wilby"
+date: "2023-07-10"
+date-format: "Do MMM YYYY"
+categories: [debate, reproducibility, open research, open scholarship, open science]
+image: "image.jpg"
+toc: true
+toc-expand: true
+abstract: "Is it possible for a proprietary tool to result in reproducible research?"
+---
+
+
+![](image.jpg)
+
+*Image produced by [Stable Diffusion](https://stablediffusionweb.com/#demo)*
+
+
+MATLAB is a proprietary language and software. It is a product, produced by MathWorks and as such they must protect their product. This is completely reasonable in my opinion. But when that tool is used to conduct research, and reproducibility is a valuable characteristic of research, its proprietary nature is in conflict with the goal of reproducibility.
+
+Less than an hour ago, a colleague shared an <a href="https://www.r-bloggers.com/2022/11/open-source-is-a-hard-requirement-for-reproducibility/" target="_blank">article published on R bloggers</a> which touched on some important questions I have considered when it comes to reproducible MATLAB.
+
+The article makes the point that for proprietary languages such as MATLAB (as well as others such as Stata or SAS), reproducibility is fundamentally hindered. I couldn't agree more!  Which, as the author of a blog called "Reproducible MATLAB", may come as a surprise. Let me explain.
+
+Firstly, let's clear up a technical question. One potential limitation of proprietary software described in the article is potential for limited availability of previous versions of the software used to generate a result. In the case of MATLAB, as it turns out (I had to go and check), you can download many (if not all) previous versions going back to R11.1, released in 1999. [^1]
+
+Then I think that things get a bit more philosophical and we have to consider how hard our definition of reproducibility is. Arguably, this definition could be completely binary: an analysis is either _completely_ reproducible, or it's **not** reproducible. This is probably the only sensible definition of reproducibility in research, but it puts some possibly unrealistic expectations on researchers who are, for the most part, just trying their best.
+
+When it comes to proprietary software like MATLAB, my view is that it's not possible to produce an idealistically reproducible piece of research using this tool. Since it puts a requirement on the end user to have access to a costly piece of software, which they may not, and if they don't then they can't reproduce the original work.
+
+_However_: if a researcher has _already_ produced some research using MATLAB, my stance is that it is fundamentally an improvement to make that research as reproducible as they can, rather than the alternative, which tends to be not making it reproducible at all.
+
+So I suppose my preference would be for reseachers to conduct research in entirely open source tooling, but if they're already using something proprietary then the pressures of the research world make it very unlikely that they will translate the work into an entirely OSS project. Therefore, it's preferable to make something _nearly_ reproducible, using a proprietary tool, if absolutely necessary.
+
+[^1]: <a href="https://en.wikipedia.org/wiki/MATLAB#Release_history" target="_blank">Wikipedia: MATLAB (release history)</a>
