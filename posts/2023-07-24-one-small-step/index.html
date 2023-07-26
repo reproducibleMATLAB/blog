@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="David Wilby">
 
-<title>repliMAT blog - blog</title>
+<title>repliMAT blog - One small step for MATLAB. One giant leap for reproducibility.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +21,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -63,40 +96,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-author','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="alternate" type="application/rss+xml" title="repliMAT blog" href="index.xml"><meta name="twitter:title" content="repliMAT blog - blog">
+<meta name="twitter:title" content="repliMAT blog - One small step for MATLAB. One giant leap for reproducibility.">
+<meta name="twitter:description" content="The stars have aligned at MathWorks to reveal a new small but powerful feature.">
 <meta name="twitter:image" content="https://reproducibleMATLAB.github.io/blog/posts/2023-07-24-one-small-step/image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -108,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">repliMAT blog</span>
     </a>
   </div>
@@ -119,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -132,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -147,222 +150,81 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">One small step for MATLAB. One giant leap for reproducibility.</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">reproducibility</div>
+                <div class="quarto-category">open research</div>
+                <div class="quarto-category">open scholarship</div>
+                <div class="quarto-category">open science</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>David Wilby </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">24th Jul 2023</p>
+      </div>
+    </div>
     
       
     </div>
     
+  <div>
+    <div class="abstract">
+      <div class="abstract-title">Abstract</div>
+      The stars have aligned at MathWorks to reveal a new small but powerful feature.
+    </div>
+  </div>
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="debate">debate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="guide">guide <span class="quarto-category-count">(1)</span></div><div class="category" data-category="open research">open research <span class="quarto-category-count">(2)</span></div><div class="category" data-category="open scholarship">open scholarship <span class="quarto-category-count">(2)</span></div><div class="category" data-category="open science">open science <span class="quarto-category-count">(2)</span></div><div class="category" data-category="reproducibility">reproducibility <span class="quarto-category-count">(3)</span></div><div class="category" data-category="survey">survey <span class="quarto-category-count">(1)</span></div><div class="category" data-category="training">training <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
+<p><img src="image.jpg" class="img-fluid"></p>
+<p><em>Image produced by <a href="https://stablediffusionweb.com/#demo">Stable Diffusion</a></em></p>
+<p>One of the major criticisms of MATLAB from a reproducibility standpoint relates to running MATLAB itself. For one thing, MATLAB is proprietary product requiring a license (<a href="../../posts/2023-07-10-can-matlab-be-reproducible/">see my last blog for more on this</a>) - presenting an expensive reroducibility hurdle. Moreover, MATLAB can be a chore to install. Unlike python for instance, where the core language library is fairly quick to install, MATLAB comes bundled with the IDE among other things and can be over a gigabyte, making it unappealing to install to test out running someone else’s code or to install a different version.</p>
+<p>Worry no more, reproducibility fans! MathWorks have got our backs.</p>
+<p>As detailed on <a href="https://blogs.mathworks.com/matlab/2023/07/20/open-science-and-reusable-research-with-matlab-online-and-github/">Mike Croucher’s post on the MATLAB blog</a>, it is now possible to create a link that will open a MATLAB GitHub repository to be run on <a href="https://www.mathworks.com/products/matlab-online.html">MATLAB Online</a> - without a license!</p>
+<p>You may have heard of the <a href="https://mybinder.org/">Binder</a> project, which has been around for a few years now, facilitating reproducible ephemeral compute environments (for python, Julia or R) in the cloud. Binder will fetch the contents of a public repo, build a docker image and spin up a compute environment in the browser.</p>
+<p>Well now we have that for MATLAB! And it’s super simple.</p>
+<p>Let’s say your code was on github at: <code>github.com/reproducibleMATLAB/temperature-visualisations</code></p>
+<p>All you have to do is create a link: <code>https://matlab.mathworks.com/open/github/v1?repo=reproducibleMATLAB/temperature-visualisations</code></p>
+<p>You can even add project files and a default starting file to your link: <code>https://matlab.mathworks.com/open/github/v1?repo=reproducibleMATLAB/temperature-visualisations&amp;project=temperature_visualisations.prj&amp;file=temperature_visualisations.mlx</code></p>
+<p>These mean that you can control the dependencies and even include files that run on project startup. I’ve used one of these in this project to check that a required toolbox is installed and to warn the user if not.</p>
+<p>There’s even a <a href="https://uk.mathworks.com/products/matlab-online/git.html">handy online tool</a> for creating these links for you.</p>
+<p>You can use it to create a link for adding a badge to your repo:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)</span><span class="co">](https://matlab.mathworks.com/open/github/v1?repo=reproducibleMATLAB/temperature-visualisations&amp;project=temperature_visualisations.prj&amp;file=temperature_visualisations.mlx)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://matlab.mathworks.com/open/github/v1?repo=reproducibleMATLAB/temperature-visualisations&amp;project=temperature_visualisations.prj&amp;file=temperature_visualisations.mlx"><img src="https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">Open in MATLAB Online</figcaption>
+</figure>
+</div>
+<p>This is a great step forward for reproducibility in MATLAB, now we can make it easy for anyone to open a MATLAB project and run it in the cloud, even if they don’t have a license. All they need is a MathWorks account and they can use the basic tier of MATLAB online for free.</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="reproducibility,open research,open scholarship,open science" data-listing-date-sort="1690156800000" data-listing-file-modified-sort="1690386400299" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/2023-07-24-one-small-step/index.html"> <img src="./posts/2023-07-24-one-small-step/image.jpg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/2023-07-24-one-small-step/index.html">
-<h3 class="no-anchor listing-title">
-One small step for MATLAB. One giant leap for reproducibility.
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('reproducibility'); return false;">
-reproducibility
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('open research'); return false;">
-open research
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('open scholarship'); return false;">
-open scholarship
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('open science'); return false;">
-open science
-</div>
-</div>
-<a href="./posts/2023-07-24-one-small-step/index.html">
-<div class="listing-description">
-<p>The stars have aligned at MathWorks to reveal a new small but powerful feature.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/2023-07-24-one-small-step/index.html">
-<div class="listing-date">
-24th Jul 2023
-</div>
-<div class="listing-author">
-David Wilby
-</div>
-<div class="listing-reading-time">
-2 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="debate,reproducibility,open research,open scholarship,open science" data-listing-date-sort="1688947200000" data-listing-file-modified-sort="1690386400295" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/2023-07-10-can-matlab-be-reproducible/index.html"> <img src="./posts/2023-07-10-can-matlab-be-reproducible/image.jpg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/2023-07-10-can-matlab-be-reproducible/index.html">
-<h3 class="no-anchor listing-title">
-Can MATLAB projects <em>ever</em> be reproducible?
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('debate'); return false;">
-debate
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('reproducibility'); return false;">
-reproducibility
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('open research'); return false;">
-open research
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('open scholarship'); return false;">
-open scholarship
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('open science'); return false;">
-open science
-</div>
-</div>
-<a href="./posts/2023-07-10-can-matlab-be-reproducible/index.html">
-<div class="listing-description">
-<p>Is it possible for a proprietary tool to result in reproducible research?</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/2023-07-10-can-matlab-be-reproducible/index.html">
-<div class="listing-date">
-10th Jul 2023
-</div>
-<div class="listing-author">
-David Wilby
-</div>
-<div class="listing-reading-time">
-3 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="reproducibility,guide" data-listing-date-sort="1682985600000" data-listing-file-modified-sort="1690386400287" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20">
-<div class="thumbnail">
-<p><a href="./posts/2022-concise-guide/index.html"> <img src="./posts/2022-concise-guide/image.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/2022-concise-guide/index.html">
-<h3 class="no-anchor listing-title">
-A ‘concise’ guide to reproducible MATLAB projects
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('reproducibility'); return false;">
-reproducibility
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('guide'); return false;">
-guide
-</div>
-</div>
-<a href="./posts/2022-concise-guide/index.html">
-<div class="listing-description">
-<p>My first thoughts about how to do MATLAB reproducibly.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/2022-concise-guide/index.html">
-<div class="listing-date">
-2nd May 2023
-</div>
-<div class="listing-author">
-David Wilby
-</div>
-<div class="listing-reading-time">
-20 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="survey,training" data-listing-date-sort="1682985600000" data-listing-file-modified-sort="1690386400295" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
-<div class="thumbnail">
-<p><a href="./posts/2023-05-02-survey/index.html"> <img src="./posts/2023-05-02-survey/image.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/2023-05-02-survey/index.html">
-<h3 class="no-anchor listing-title">
-Reproducible MATLAB: what do the people want?
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('survey'); return false;">
-survey
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('training'); return false;">
-training
-</div>
-</div>
-<a href="./posts/2023-05-02-survey/index.html">
-<div class="listing-description">
-<p>Surveying MATLAB users in research on the topic of reproducibility.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/2023-05-02-survey/index.html">
-<div class="listing-date">
-2nd May 2023
-</div>
-<div class="listing-author">
-David Wilby
-</div>
-<div class="listing-reading-time">
-10 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
