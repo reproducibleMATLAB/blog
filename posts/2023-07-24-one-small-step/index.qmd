@@ -1,0 +1,46 @@
+---
+title: "One small step for MATLAB. One giant leap for reproducibility."
+author: "David Wilby"
+date: "2023-07-26"
+date-format: "Do MMM YYYY"
+categories: [reproducibility, open research, open scholarship, open science]
+image: "image.jpg"
+toc: true
+toc-expand: true
+abstract: "The stars have aligned at MathWorks to reveal a new small but powerful feature."
+---
+
+![](image.jpg)
+
+*Image produced by [Stable Diffusion](https://stablediffusionweb.com/#demo)*
+
+
+One of the major criticisms of MATLAB from a reproducibility standpoint relates to running MATLAB itself. For one thing, MATLAB is proprietary product requiring a license ([see my last blog for more on this](/posts/2023-07-10-can-matlab-be-reproducible/)) - presenting an expensive reroducibility hurdle. Moreover, MATLAB can be a chore to install. Unlike python for instance, where the core language library is fairly quick to install, MATLAB comes bundled with the IDE among other things and can be over a gigabyte, making it unappealing to install to test out running someone else's code or to install a different version.
+
+Worry no more, reproducibility fans! MathWorks have got our backs.
+
+As detailed on [Mike Croucher's post on the MATLAB blog](https://blogs.mathworks.com/matlab/2023/07/20/open-science-and-reusable-research-with-matlab-online-and-github/), it is now possible to create a link that will open a MATLAB GitHub repository to be run on [MATLAB Online](https://www.mathworks.com/products/matlab-online.html) - without a license!
+
+You may have heard of the [Binder](https://mybinder.org/) project, which has been around for a few years now, facilitating reproducible ephemeral compute environments (for python, Julia or R) in the cloud. Binder will fetch the contents of a public repo, build a docker image and spin up a compute environment in the browser.
+
+Well now we have that for MATLAB! And it's super simple.
+
+Let's say your code was on github at: `github.com/reproducibleMATLAB/temperature-visualisations`
+
+All you have to do is create a link: `https://matlab.mathworks.com/open/github/v1?repo=reproducibleMATLAB/temperature-visualisations`
+
+You can even add project files and a default starting file to your link: `https://matlab.mathworks.com/open/github/v1?repo=reproducibleMATLAB/temperature-visualisations&project=temperature_visualisations.prj&file=temperature_visualisations.mlx`
+
+These mean that you can control the dependencies and even include files that run on project startup. I've used one of these in this project to check that a required toolbox is installed and to warn the user if not.
+
+There's even a [handy online tool](https://uk.mathworks.com/products/matlab-online/git.html) for creating these links for you.
+
+You can use it to create a link for adding a badge to your repo:
+
+```md
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=reproducibleMATLAB/temperature-visualisations&project=temperature_visualisations.prj&file=temperature_visualisations.mlx)
+```
+
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=reproducibleMATLAB/temperature-visualisations&project=temperature_visualisations.prj&file=temperature_visualisations.mlx)
+
+This is a great step forward for reproducibility in MATLAB, now we can make it easy for anyone to open a MATLAB project and run it in the cloud, even if they don't have a license. All they need is a MathWorks account and they can use the basic tier of MATLAB online for free.
